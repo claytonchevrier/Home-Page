@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<base target="_blank">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Clayton N. Chevrier's Favorites</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #0f1419;
+			--surface: #1a2332;
+			--surface-hover: #243044;
+			--border: #2d3a4d;
+			--text: #e6edf3;
+			--text-muted: #8b9cb3;
+			--accent: #3b82f6;
+			--accent-soft: rgba(59, 130, 246, 0.15);
+			--gold: #eab308;
+			--gold-soft: rgba(234, 179, 8, 0.12);
+			--radius: 12px;
+			--shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			background: var(--bg);
+			background-image:
+				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+				radial-gradient(ellipse 60% 40% at 100% 100%, rgba(234, 179, 8, 0.06), transparent);
+			color: var(--text);
+			font-family: 'DM Sans', system-ui, sans-serif;
+			font-size: 15px;
+			line-height: 1.6;
+		}
+
+		.page {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 2.5rem 1.5rem 3rem;
+		}
+
+		h1 {
+			font-family: 'Playfair Display', Georgia, serif;
+			font-size: clamp(1.75rem, 4vw, 2.25rem);
+			font-weight: 600;
+			text-align: center;
+			margin: 0 0 2.5rem;
+			letter-spacing: 0.02em;
+			color: var(--text);
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+			gap: 1.25rem;
+		}
+
+		.card {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.25rem 1.35rem;
+			box-shadow: var(--shadow);
+			transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+		}
+
+		.card:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+			border-color: var(--accent);
+			background: var(--surface-hover);
+		}
+
+		.card h2 {
+			font-size: 0.95rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--gold);
+			margin: 0 0 0.85rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid var(--border);
+		}
+
+		.card ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.card li {
+			margin: 0.35rem 0;
+		}
+
+		.card li:not(:last-child) {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+		}
+
+		.card a {
+			display: block;
+			padding: 0.45rem 0;
+			color: var(--text);
+			text-decoration: none;
+			border-radius: 6px;
+			transition: color 0.15s ease, background 0.15s ease, padding-left 0.15s ease;
+		}
+
+		.card a:hover {
+			color: var(--accent);
+			background: var(--accent-soft);
+			padding-left: 0.5rem;
+		}
+
+		.card hr {
+			border: none;
+			height: 1px;
+			background: var(--border);
+			margin: 0.6rem 0;
+		}
+
+		/* Tooltip */
+		.tooltip {
+			position: relative;
+			display: inline-block;
+		}
+
+		.tooltip .tooltiptext {
+			visibility: hidden;
+			width: 140px;
+			background: var(--surface-hover);
+			color: var(--text);
+			text-align: center;
+			padding: 0.5rem 0.6rem;
+			border-radius: 8px;
+			font-size: 0.85rem;
+			position: absolute;
+			z-index: 10;
+			bottom: 125%;
+			left: 50%;
+			transform: translateX(-50%);
+			opacity: 0;
+			transition: opacity 0.2s ease, visibility 0.2s ease;
+			border: 1px solid var(--border);
+		}
+
+		.tooltip:hover .tooltiptext {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.stats-card {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.25rem 1.35rem;
+			margin-top: 1.5rem;
+			box-shadow: var(--shadow);
+		}
+
+		.stats-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			margin-bottom: 1rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid var(--border);
+		}
+
+		.stats-card h2 {
+			font-size: 0.95rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--gold);
+			margin: 0;
+		}
+
+		.reset-counts-btn {
+			font-family: inherit;
+			font-size: 0.8rem;
+			font-weight: 600;
+			color: var(--text-muted);
+			background: transparent;
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			padding: 0.35rem 0.65rem;
+			cursor: pointer;
+			transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+		}
+
+		.reset-counts-btn:hover {
+			color: #f87171;
+			border-color: #f87171;
+			background: rgba(248, 113, 113, 0.1);
+		}
+
+		.stats-ranked {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.stats-ranked li {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			margin: 0.5rem 0;
+			font-size: 0.9rem;
+		}
+
+		.stats-ranked .rank {
+			flex-shrink: 0;
+			width: 1.5rem;
+			color: var(--text-muted);
+			font-weight: 600;
+			text-align: right;
+		}
+
+		.stats-ranked .bar-wrap {
+			flex: 1;
+			min-width: 0;
+			height: 6px;
+			background: rgba(255, 255, 255, 0.06);
+			border-radius: 3px;
+			overflow: hidden;
+		}
+
+		.stats-ranked .bar {
+			height: 100%;
+			background: linear-gradient(90deg, var(--accent), #60a5fa);
+			border-radius: 3px;
+			transition: width 0.3s ease;
+		}
+
+		.stats-ranked .label {
+			flex: 1;
+			min-width: 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.stats-ranked .count {
+			flex-shrink: 0;
+			font-weight: 700;
+			color: var(--gold);
+			min-width: 2.5rem;
+			text-align: right;
+		}
+
+		.stats-empty {
+			margin: 0;
+			color: var(--text-muted);
+			font-size: 0.9rem;
+		}
+
+		.card a {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.5rem;
+		}
+
+		.click-count {
+			flex-shrink: 0;
+			font-size: 0.75rem;
+			font-weight: 600;
+			color: var(--text-muted);
+			background: rgba(255, 255, 255, 0.06);
+			padding: 0.15rem 0.45rem;
+			border-radius: 999px;
+			min-width: 1.25rem;
+			text-align: center;
+		}
+
+		.click-count.has-clicks {
+			color: var(--gold);
+			background: var(--gold-soft);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="page">
+		<h1>Clayton's Bookmarks</h1>
+
+		<div class="grid">
+			<section class="card">
+				<h2>Shopping</h2>
+				<ul>
+					<li><a href="https://www.bankofamerica.com/">Bank of America</a></li>
+					<li><a href="https://www.amazon.com/">Amazon</a></li>
+					<li><a href="https://pharmacy.amazon.com/">Amazon Pharmacy</a></li>
+					<li><a href="https://www.shopping.hp.com/">HP Shopping</a></li>
+				</ul>
+			</section>
+
+			<section class="card">
+				<h2>Investments</h2>
+				<ul>
+					<li><a href="https://investing.schwab.com/trading/start">Charles Schwab</a></li>
+					<li><a href="https://snowball-analytics.com/dashboard">Snowball</a></li>
+					<li><a href="https://docs.google.com/spreadsheets/d/1G0Ec-22rkDvHKbilcEgCM6c6rJfywnnaZ1awrw6Lyh4/edit?gid=219391491#gid=219391491">Current Stocks</a></li>
+				</ul>
+			</section>
+
+			<section class="card">
+				<h2>LDS Church</h2>
+				<ul>
+					<li><a href="https://www.churchofjesuschrist.org/">Church Web Site</a></li>
+					<li><a href="https://donations.churchofjesuschrist.org/">Church Donations</a></li>
+					<li><a href="https://newsroom.churchofjesuschrist.org/">Mormon Newsroom</a></li>
+				</ul>
+			</section>
+
+			<section class="card">
+				<h2>Misc</h2>
+				<ul>
+					<li><a href="http://chevrier.org:2222/">Host Rocket</a></li>
+					<li><a href="https://chase.com/">Chase Online</a></li>
+				</ul>
+			</section>
+
+			<section class="card" style="grid-column: span 1;">
+				<h2>Media</h2>
+				<ul>
+					<li><a href="https://pjmedia.com/">PJ Tatler</a></li>
+					<li><a href="https://www.breitbart.com/">Breitbart</a></li>
+					<li><a href="https://www.townhall.com/">Town Hall</a></li>
+					<li><a href="https://www.hotair.com/">Hot Air</a></li>
+					<li><a href="https://spectator.org/">American Spectator</a></li>
+					<hr>
+					<li><a href="https://news.google.com/">Google News</a></li>
+					<hr>
+					<li><a href="https://realclearpolitics.com/">Real Clear Politics</a></li>
+					<li><a href="https://www.realclearreligion.org/">Real Clear Religion</a></li>
+					<hr>
+					<li><a href="https://www.hollywoodreporter.com/">Hollywood Reporter</a></li>
+					<li><a href="https://www.ew.com/">EW</a></li>
+					<li><a href="https://www.variety.com/">Variety</a></li>
+					<li><a href="https://www.boxofficemojo.com/">Box Office Mojo</a></li>
+				</ul>
+			</section>
+		</div>
+
+		<section class="stats-card" aria-labelledby="stats-heading">
+			<div class="stats-header">
+				<h2 id="stats-heading">Most used</h2>
+				<button type="button" class="reset-counts-btn" id="reset-counts">Reset counts</button>
+			</div>
+			<p class="stats-empty" id="stats-empty">No clicks yet — open a bookmark to start tracking.</p>
+			<ol class="stats-ranked" id="stats-ranked" hidden></ol>
+		</section>
+	</div>
+
+	<script>
+		const STORAGE_KEY = 'bookmarkClickCounts';
+
+		function loadCounts() {
+			try {
+				const raw = localStorage.getItem(STORAGE_KEY);
+				return raw ? JSON.parse(raw) : {};
+			} catch {
+				return {};
+			}
+		}
+
+		function saveCounts(counts) {
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(counts));
+		}
+
+		function recordClick(href, label) {
+			const counts = loadCounts();
+			if (!counts[href]) {
+				counts[href] = { count: 0, label };
+			}
+			counts[href].count += 1;
+			counts[href].label = label;
+			saveCounts(counts);
+			return counts[href].count;
+		}
+
+		function getCount(href) {
+			return loadCounts()[href]?.count || 0;
+		}
+
+		function ensureCountBadge(link) {
+			let badge = link.querySelector('.click-count');
+			if (!badge) {
+				badge = document.createElement('span');
+				badge.className = 'click-count';
+				badge.setAttribute('aria-hidden', 'true');
+				link.appendChild(badge);
+			}
+			return badge;
+		}
+
+		function updateLinkBadge(link) {
+			const count = getCount(link.href);
+			const badge = ensureCountBadge(link);
+			badge.textContent = count;
+			badge.classList.toggle('has-clicks', count > 0);
+		}
+
+		function renderStats() {
+			const counts = loadCounts();
+			const ranked = Object.entries(counts)
+				.map(([href, data]) => ({ href, label: data.label, count: data.count }))
+				.filter((item) => item.count > 0)
+				.sort((a, b) => b.count - a.count);
+
+			const list = document.getElementById('stats-ranked');
+			const empty = document.getElementById('stats-empty');
+			list.innerHTML = '';
+
+			if (ranked.length === 0) {
+				list.hidden = true;
+				empty.hidden = false;
+				return;
+			}
+
+			const max = ranked[0].count;
+			empty.hidden = true;
+			list.hidden = false;
+
+			ranked.forEach((item, index) => {
+				const li = document.createElement('li');
+				const pct = max > 0 ? (item.count / max) * 100 : 0;
+				li.innerHTML =
+					'<span class="rank">' + (index + 1) + '.</span>' +
+					'<span class="label" title="' + escapeHtml(item.label) + '">' + escapeHtml(item.label) + '</span>' +
+					'<span class="bar-wrap" aria-hidden="true"><span class="bar" style="width:' + pct + '%"></span></span>' +
+					'<span class="count">' + item.count + '</span>';
+				list.appendChild(li);
+			});
+		}
+
+		function escapeHtml(text) {
+			const div = document.createElement('div');
+			div.textContent = text;
+			return div.innerHTML;
+		}
+
+		function getLinkLabel(link) {
+			const clone = link.cloneNode(true);
+			clone.querySelector('.click-count')?.remove();
+			return clone.textContent.trim() || link.href;
+		}
+
+		function resetCounts() {
+			localStorage.removeItem(STORAGE_KEY);
+			refreshUI();
+		}
+
+		function refreshUI() {
+			document.querySelectorAll('.card a[href]').forEach(updateLinkBadge);
+			renderStats();
+		}
+
+		document.getElementById('reset-counts').addEventListener('click', () => {
+			if (confirm('Reset all click counts? This cannot be undone.')) {
+				resetCounts();
+			}
+		});
+
+		document.querySelectorAll('.card a[href]').forEach((link) => {
+			link.dataset.label = getLinkLabel(link);
+			updateLinkBadge(link);
+			link.addEventListener('click', () => {
+				recordClick(link.href, link.dataset.label || getLinkLabel(link));
+				refreshUI();
+			});
+		});
+
+		renderStats();
+	</script>
+</body>
+</html>
