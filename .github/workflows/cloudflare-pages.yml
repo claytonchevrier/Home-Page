@@ -20,6 +20,7 @@ jobs:
           command: pages deploy . --project-name=home-page
 
       - name: Attach claytonchevrier.org
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -27,6 +28,7 @@ jobs:
           command: pages domain add claytonchevrier.org --project-name=home-page
 
       - name: Attach www.claytonchevrier.org
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
