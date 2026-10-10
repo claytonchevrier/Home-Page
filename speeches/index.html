@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>BYU Speeches</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column, max 1180px; speakers page = card grid, speaker page = the same speaker card beside a sortable talk register */
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --ink: #18202e; --muted: #5b6577; --line: #dde1e8;
+  --accent: #1f4f8f; --chip: #eef0f4;
+  --oaks: #1f4f8f; --nelson: #8a4b16; --ballard: #2f6b4f;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11151c; --surface: #181e28; --ink: #e6e9ef; --muted: #98a2b3; --line: #2a3240;
+  --accent: #7fb0ec; --chip: #222a37; --oaks: #7fb0ec; --nelson: #e3a46c; --ballard: #7fc9a3; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #181e28; --ink: #e6e9ef; --muted: #98a2b3; --line: #2a3240;
+  --accent: #7fb0ec; --chip: #222a37; --oaks: #7fb0ec; --nelson: #e3a46c; --ballard: #7fc9a3; color-scheme: dark }
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--font-body); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 24px 48px; }
+a { color: var(--accent) }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.crumbs { font-size: .85rem; color: var(--muted); margin-bottom: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+.crumbs a { text-decoration: none } .crumbs a:hover { text-decoration: underline }
+h1 { font: 600 clamp(1.7rem, 3.4vw, 2.4rem)/1.15 var(--font-display); margin: 0 0 6px; text-wrap: balance; }
+.lede { color: var(--muted); margin: 0 0 24px; max-width: 68ch; }
+.lbl { font: 600 .72rem var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+/* speaker card (used on both pages) */
+.card { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 8px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; color: var(--ink); text-decoration: none; }
+.card h2 { font: 600 1.45rem/1.15 var(--font-display); margin: 0; text-wrap: balance; }
+.card .life { font: .82rem var(--font-mono); color: var(--muted); }
+.card .ttl { font-weight: 500; }
+.card p { margin: 0; color: var(--muted); font-size: .92rem; max-width: 70ch; }
+.card ul { margin: 0; padding-left: 18px; font-size: .88rem; display: grid; gap: 2px; }
+.card .stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font: .84rem var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.card .stats b { color: var(--ink); font-weight: 500; }
+.card .go { font-weight: 600; color: var(--accent); }
+a.card:hover { border-color: var(--c); box-shadow: 0 0 0 1px var(--c) inset; }
+a.card:hover .go { text-decoration: underline; }
+@media (prefers-reduced-motion: no-preference) { a.card { transition: border-color .15s, box-shadow .15s } }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.foot { margin-top: 22px; font-size: .8rem; color: var(--muted); max-width: 80ch; }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">claytonchevrier.org</a><span>/</span><span>BYU Speeches</span></nav>
+  <h1>BYU Speeches</h1>
+  <p class="lede">Talks given at Brigham Young University by three Church leaders, from the BYU Speeches archive. Choose a speaker to see all of their talks.</p>
+  <div class="grid">
+<a class="card" href="/speeches/dallin-h-oaks/" style="--c:var(--oaks)">
+    <h2>Dallin H. Oaks</h2>
+    <div class="life">1932–</div>
+    <div class="ttl">President of The Church of Jesus Christ of Latter-day Saints (since October 2025)</div>
+    <p>Lawyer, law professor, and former BYU president; former Utah Supreme Court justice; became the Church&#x27;s eighteenth president in October 2025.</p>
+    <div><div class="lbl">Callings</div><ul><li>President of Brigham Young University (1971–1980)</li><li>Justice, Utah Supreme Court (1980–1984)</li><li>Quorum of the Twelve Apostles (1984–2018)</li><li>First Counselor in the First Presidency (2018–2025)</li><li>President of the Church (2025– )</li></ul></div>
+    <div class="stats"><span><b>39</b> talks</span><span><b>1971–2026</b></span></div>
+    <span class="go">View 39 talks →</span></a>
+<a class="card" href="/speeches/russell-m-nelson/" style="--c:var(--nelson)">
+    <h2>Russell M. Nelson</h2>
+    <div class="life">1924–2025 · died September 27, 2025</div>
+    <div class="ttl">Seventeenth President of The Church of Jesus Christ of Latter-day Saints (2018–2025)</div>
+    <p>Pioneering heart surgeon who helped make open-heart surgery possible; apostle for over thirty years before leading the Church. Died September 27, 2025, at 101.</p>
+    <div><div class="lbl">Callings</div><ul><li>Sunday School General President (1971–1979)</li><li>Quorum of the Twelve Apostles (1984–2018)</li><li>President of the Quorum of the Twelve (2015–2018)</li><li>President of the Church (2018–2025)</li></ul></div>
+    <div class="stats"><span><b>23</b> talks</span><span><b>1974–2019</b></span></div>
+    <span class="go">View 23 talks →</span></a>
+<a class="card" href="/speeches/m-russell-ballard/" style="--c:var(--ballard)">
+    <h2>M. Russell Ballard</h2>
+    <div class="life">1928–2023 · died November 12, 2023</div>
+    <div class="ttl">Acting President of the Quorum of the Twelve Apostles (2018–2023)</div>
+    <p>Businessman in automotive, real estate, and investments before full-time Church service; called to the Seventy in 1976 and the Twelve in 1985. Died November 12, 2023.</p>
+    <div><div class="lbl">Callings</div><ul><li>Canada Toronto Mission President (1974–1976)</li><li>Seventy (1976–1985)</li><li>Quorum of the Twelve Apostles (1985–2023)</li><li>Acting President of the Quorum of the Twelve (2018–2023)</li></ul></div>
+    <div class="stats"><span><b>23</b> talks</span><span><b>1978–2020</b></span></div>
+    <span class="go">View 23 talks →</span></a>
+  </div>
+  <p class="foot">Talks and speaker details from <a href="https://speeches.byu.edu" target="_blank" rel="noopener">BYU Speeches</a>, collected 2026-10-10. Talk links open the talk on speeches.byu.edu in a new tab.</p>
+</div>
+</body>
+</html>

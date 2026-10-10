@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Dallin H. Oaks — BYU Speeches</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column, max 1180px; speakers page = card grid, speaker page = the same speaker card beside a sortable talk register */
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --ink: #18202e; --muted: #5b6577; --line: #dde1e8;
+  --accent: #1f4f8f; --chip: #eef0f4;
+  --oaks: #1f4f8f; --nelson: #8a4b16; --ballard: #2f6b4f;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11151c; --surface: #181e28; --ink: #e6e9ef; --muted: #98a2b3; --line: #2a3240;
+  --accent: #7fb0ec; --chip: #222a37; --oaks: #7fb0ec; --nelson: #e3a46c; --ballard: #7fc9a3; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #181e28; --ink: #e6e9ef; --muted: #98a2b3; --line: #2a3240;
+  --accent: #7fb0ec; --chip: #222a37; --oaks: #7fb0ec; --nelson: #e3a46c; --ballard: #7fc9a3; color-scheme: dark }
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--font-body); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 24px 48px; }
+a { color: var(--accent) }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.crumbs { font-size: .85rem; color: var(--muted); margin-bottom: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+.crumbs a { text-decoration: none } .crumbs a:hover { text-decoration: underline }
+h1 { font: 600 clamp(1.7rem, 3.4vw, 2.4rem)/1.15 var(--font-display); margin: 0 0 6px; text-wrap: balance; }
+.lede { color: var(--muted); margin: 0 0 24px; max-width: 68ch; }
+.lbl { font: 600 .72rem var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+/* speaker card (used on both pages) */
+.card { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 8px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; color: var(--ink); text-decoration: none; }
+.card h2 { font: 600 1.45rem/1.15 var(--font-display); margin: 0; text-wrap: balance; }
+.card .life { font: .82rem var(--font-mono); color: var(--muted); }
+.card .ttl { font-weight: 500; }
+.card p { margin: 0; color: var(--muted); font-size: .92rem; max-width: 70ch; }
+.card ul { margin: 0; padding-left: 18px; font-size: .88rem; display: grid; gap: 2px; }
+.card .stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font: .84rem var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.card .stats b { color: var(--ink); font-weight: 500; }
+.card .go { font-weight: 600; color: var(--accent); }
+a.card:hover { border-color: var(--c); box-shadow: 0 0 0 1px var(--c) inset; }
+a.card:hover .go { text-decoration: underline; }
+@media (prefers-reduced-motion: no-preference) { a.card { transition: border-color .15s, box-shadow .15s } }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.foot { margin-top: 22px; font-size: .8rem; color: var(--muted); max-width: 80ch; }
+</style>
+<style>
+.main { display: grid; grid-template-columns: minmax(300px, 370px) minmax(0, 1fr); gap: 24px; align-items: start; }
+.main > .card { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+@media (max-width: 900px) { .main { grid-template-columns: 1fr } .main > .card { position: static } }
+.main .go { text-decoration: none } .main .go:hover { text-decoration: underline }
+select { font: inherit; font-size: .9rem; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
+.bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.count { font: 500 .9rem var(--font-mono); color: var(--muted); }
+.sortm { display: none; gap: 6px; align-items: center; } .sortm select { width: auto }
+.tbl { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th { text-align: left; font: 600 .72rem var(--font-body); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th button { all: unset; cursor: pointer; } th button:focus-visible { outline: 2px solid var(--accent); }
+th button[aria-sort]::after { content: " " attr(data-dir); color: var(--accent); }
+td { padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 0 }
+.d { font: .82rem var(--font-mono); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.num { font: .82rem var(--font-mono); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.t a { font: 600 1.02rem/1.3 var(--font-display); color: var(--ink); text-decoration: none; }
+.t a:hover { color: var(--accent); text-decoration: underline; }
+.t a .ext { font: .75rem var(--font-body); color: var(--muted); margin-left: 4px; }
+.pos { font-size: .8rem; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.tag { font-size: .74rem; padding: 1px 7px; border-radius: 10px; background: var(--chip); color: var(--muted); }
+.note { font-size: .74rem; color: var(--muted); font-style: italic; }
+@media (max-width: 720px) {
+  /* Phone: each talk becomes a compact block — date · length on top, title, calling, topics */
+  thead { display: none } .sortm { display: flex }
+  table, tbody { display: block; width: 100% }
+  tbody tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  tbody tr:last-child { border-bottom: 0 }
+  td { display: block; padding: 0; border: 0; }
+  .d { order: 1; color: var(--muted); }
+  .num { order: 2; text-align: left; color: var(--muted); }
+  .num:not(:empty)::before { content: "· "; }
+  .t { order: 3; width: 100%; }
+  .t .pos { display: none; }
+  .cl { order: 4; width: 100%; font-size: .82rem; color: var(--muted); }
+  .cl .note { display: inline; margin-left: 6px; }
+  .t .tags { order: 5; }
+  .t a { font-size: 1.08rem; display: inline-block; padding-block: 2px; }
+  .tag { font-size: .72rem; }
+  .card { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">claytonchevrier.org</a><span>/</span><a href="/speeches/">BYU Speeches</a><span>/</span><span>Dallin H. Oaks</span></nav>
+  <div class="main">
+    <section class="card" style="--c:var(--oaks)" aria-label="About Dallin H. Oaks">
+    <h2>Dallin H. Oaks</h2>
+    <div class="life">1932–</div>
+    <div class="ttl">President of The Church of Jesus Christ of Latter-day Saints (since October 2025)</div>
+    <p>Lawyer, law professor, and former BYU president; former Utah Supreme Court justice; became the Church&#x27;s eighteenth president in October 2025.</p>
+    <div><div class="lbl">Callings</div><ul><li>President of Brigham Young University (1971–1980)</li><li>Justice, Utah Supreme Court (1980–1984)</li><li>Quorum of the Twelve Apostles (1984–2018)</li><li>First Counselor in the First Presidency (2018–2025)</li><li>President of the Church (2025– )</li></ul></div>
+    <div class="stats"><span><b>39</b> talks</span><span><b>1971–2026</b></span></div>
+    <a class="go" href="/speeches/">← All speakers</a></section>
+    <section style="min-width:0">
+      <div class="bar">
+        <span class="count" id="count"></span>
+        <div class="sortm"><label for="sortSel" class="lbl">Sort</label>
+          <select id="sortSel"><option value="date:desc">Newest first</option><option value="date:asc">Oldest first</option>
+            <option value="title:asc">Title A–Z</option><option value="runtime_min:desc">Longest</option><option value="runtime_min:asc">Shortest</option></select></div>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr>
+          <th><button type="button" data-k="date">Date</button></th>
+          <th><button type="button" data-k="title">Talk</button></th>
+          <th><button type="button" data-k="role_group">Calling</button></th>
+          <th style="text-align:right"><button type="button" data-k="runtime_min">Length</button></th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      </div>
+    </section>
+  </div>
+  <p class="foot">Talks and speaker details from <a href="https://speeches.byu.edu" target="_blank" rel="noopener">BYU Speeches</a>, collected 2026-10-10. Talk links open the talk on speeches.byu.edu in a new tab.</p>
+</div>
+<script>
+const talks = [{"title": "Coming Closer to Jesus Christ", "date": "2026-02-10", "year": 2026, "position_listed": "President of The Church of Jesus Christ of Latter-day Saints", "role_group": "President of the Church", "role_note": false, "topics": ["Covenants", "Eternal Life", "Faith", "Holy Ghost", "Humility", "Jesus Christ", "Patience", "The Church of Jesus Christ of Latter-day Saints"], "runtime": "21:58", "runtime_min": 22.0, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/coming-closer-to-jesus-christ/"}, {"title": "Honoring Judge J. Clifford Wallace: A Life of Law, Leadership, and Legacy", "date": "2025-04-24", "year": 2025, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "First Presidency", "role_note": true, "topics": ["Character"], "runtime": "3:14", "runtime_min": 3.2, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/honoring-judge-j-clifford-wallace-a-life-of-law-leadership-and-legacy/"}, {"title": "Going Forward in the Second Century", "date": "2022-09-13", "year": 2022, "position_listed": "First Counselor in the First Presidency", "role_group": "First Presidency", "role_note": false, "topics": ["BYU", "Opportunity"], "runtime": "24:56", "runtime_min": 24.9, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/going-forward-in-the-second-century/"}, {"title": "Racism and Other Challenges", "date": "2020-10-27", "year": 2020, "position_listed": "First Counselor in the First Presidency", "role_group": "First Presidency", "role_note": false, "topics": ["Peace", "Race", "Unity"], "runtime": "29:54", "runtime_min": 29.9, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/racism-other-challenges/"}, {"title": "Challenges to the Mission of Brigham Young University", "date": "2017-04-21", "year": 2017, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["BYU", "Education", "Church Educational System", "Faculty Research", "Teaching"], "runtime": "20:56", "runtime_min": 20.9, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/challenges-mission-brigham-young-university/"}, {"title": "Elections, Hope, and Freedom", "date": "2016-09-13", "year": 2016, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Freedom", "Hope", "Peacemaking", "Politics", "Religious Freedom"], "runtime": "32:42", "runtime_min": 32.7, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/elections-hope-freedom/"}, {"title": "Joy at Graduation", "date": "2015-08-13", "year": 2015, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Creativity", "Education", "Service"], "runtime": "16:06", "runtime_min": 16.1, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/joy-at-graduation/"}, {"title": "Hold the Banner High", "date": "2012-04-19", "year": 2012, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["BYU", "Divine Potential", "Self-Reliance"], "runtime": "21:21", "runtime_min": 21.4, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/hold-the-banner-high/"}, {"title": "Truth and Tolerance", "date": "2011-09-11", "year": 2011, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Morality", "Religious Freedom", "Tolerance", "Truth"], "runtime": "38:51", "runtime_min": 38.9, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/truth-and-tolerance/"}, {"title": "Push Back Against the World", "date": "2007-11-04", "year": 2007, "position_listed": "Of the Quorum of the Twelve Apostles and Wife", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Discipleship", "Sabbath Day"], "runtime": "51:27", "runtime_min": 51.5, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/push-back-world/"}, {"title": "The Dedication of a Lifetime", "date": "2005-05-01", "year": 2005, "position_listed": "", "role_group": "Quorum of the Twelve", "role_note": true, "topics": ["Accountability", "Discipleship"], "runtime": "44:45", "runtime_min": 44.8, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/the-dedication-of-a-lifetime/"}, {"title": "Where Will It Lead?", "date": "2004-11-09", "year": 2004, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Habits", "Morality", "Righteousness"], "runtime": "30:25", "runtime_min": 30.4, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/will-lead/"}, {"title": "Timing", "date": "2002-01-29", "year": 2002, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Mortality", "Obedience", "Patience", "Time Management", "Trust"], "runtime": "28:16", "runtime_min": 28.3, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/timing/"}, {"title": "Weightier Matters", "date": "1999-02-09", "year": 1999, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Agency", "Unity"], "runtime": "33:40", "runtime_min": 33.7, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/weightier-matters/"}, {"title": "Why Do We Serve at BYU?", "date": "1998-08-23", "year": 1998, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["BYU", "Service"], "runtime": "36:07", "runtime_min": 36.1, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/serve-byu/"}, {"title": "Judge Not and Judging", "date": "1998-03-01", "year": 1998, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Final Judgment", "Judging", "Laws"], "runtime": "34:49", "runtime_min": 34.8, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/judge-judging/"}, {"title": "Adversity", "date": "1995-01-17", "year": 1995, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Adversity", "Endurance", "Perspective"], "runtime": "35:26", "runtime_min": 35.4, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/adversity/"}, {"title": "Sins and Mistakes", "date": "1994-08-16", "year": 1994, "position_listed": "Of the Quorum of the Twelve", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Failure", "Sin"], "runtime": "39:00", "runtime_min": 39.0, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/sins-mistakes/"}, {"title": "Responsibilities of Citizenship", "date": "1994-07-03", "year": 1994, "position_listed": "", "role_group": "Quorum of the Twelve", "role_note": true, "topics": ["America", "Citizenship", "Laws"], "runtime": "53:45", "runtime_min": 53.8, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/responsibilites-of-citizenship/"}, {"title": "Another Testament of Jesus Christ", "date": "1993-06-06", "year": 1993, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Book of Mormon", "Discipleship", "Jesus Christ"], "runtime": "41:03", "runtime_min": 41.0, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/another-testament-jesus-christ/"}, {"title": "Our Strengths Can Become Our Downfall", "date": "1992-06-07", "year": 1992, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Strength", "Weaknesses"], "runtime": "38:01", "runtime_min": 38.0, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/strengths-can-become-downfall/"}, {"title": "Getting to Know China", "date": "1991-03-12", "year": 1991, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["China", "Missionary Work"], "runtime": "33:55", "runtime_min": 33.9, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/getting-know-china/"}, {"title": "Meeting the Challenges of the Nineties", "date": "1990-08-28", "year": 1990, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["BYU", "Higher Education", "Admissions", "Church Education", "Faculty"], "runtime": "35:34", "runtime_min": 35.6, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/meeting-challenges-nineties/"}, {"title": "Sin and Suffering", "date": "1990-08-05", "year": 1990, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Adversity", "Final Judgment", "Repentance", "Sin"], "runtime": "32:03", "runtime_min": 32.0, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/sin-suffering/"}, {"title": "Free Agency and Freedom", "date": "1987-10-11", "year": 1987, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Agency", "Freedom", "Plan of Salvation"], "runtime": "40:49", "runtime_min": 40.8, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/free-agency-freedom/"}, {"title": "Spiritual Gifts", "date": "1986-03-01", "year": 1986, "position_listed": "", "role_group": "Quorum of the Twelve", "role_note": true, "topics": ["Spiritual Gifts"], "runtime": "32:20", "runtime_min": 32.3, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/spiritual-gifts-2/"}, {"title": "The Desires of Our Hearts", "date": "1985-10-08", "year": 1985, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Thoughts"], "runtime": "30:00", "runtime_min": 30.0, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/desires-hearts/"}, {"title": "Counsel for Students", "date": "1984-09-18", "year": 1984, "position_listed": "Of the Quorum of the Twelve Apostles", "role_group": "Quorum of the Twelve", "role_note": false, "topics": ["Worthiness"], "runtime": "27:22", "runtime_min": 27.4, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/counsel-students/"}, {"title": "Revelation", "date": "1981-09-29", "year": 1981, "position_listed": "Justice of the Utah Supreme Court", "role_group": "Utah Supreme Court", "role_note": false, "topics": ["Holy Ghost", "Revelation", "Stewardship"], "runtime": "33:58", "runtime_min": 34.0, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/revelation/"}, {"title": "The Formula for Success at BYU", "date": "1979-09-01", "year": 1979, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["BYU", "Success"], "runtime": null, "runtime_min": null, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/formula-success-byu/"}, {"title": "Where Much Is Given", "date": "1978-09-05", "year": 1978, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["Honor Code", "Responsibility"], "runtime": "36:06", "runtime_min": 36.1, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/much-given/"}, {"title": "A House of Faith", "date": "1977-08-31", "year": 1977, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["BYU", "Faith"], "runtime": "33:37", "runtime_min": 33.6, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/a-house-of-faith/"}, {"title": "Expectations at BYU", "date": "1976-08-31", "year": 1976, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["BYU"], "runtime": "33:55", "runtime_min": 33.9, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/expectations-byu/"}, {"title": "The Student Body and the President", "date": "1975-09-09", "year": 1975, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["BYU"], "runtime": "43:15", "runtime_min": 43.2, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/student-body-president/"}, {"title": "The Blessing of Commandments", "date": "1974-09-10", "year": 1974, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["Blessings", "Commandments", "Sabbath Day"], "runtime": "35:20", "runtime_min": 35.3, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/blessing-commandments/"}, {"title": "Challenges for the Year Ahead", "date": "1973-09-06", "year": 1973, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["BYU", "Honor Code", "Self-Improvement"], "runtime": null, "runtime_min": null, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/challenges-year-ahead/"}, {"title": "Be Honest in All Behavior", "date": "1973-01-30", "year": 1973, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["Integrity"], "runtime": "29:21", "runtime_min": 29.4, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/honest-behavior/"}, {"title": "Why Dress and Grooming Standards?", "date": "1971-09-23", "year": 1971, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["Honor", "Honor Code", "Modesty"], "runtime": "54:07", "runtime_min": 54.1, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/dress-grooming-standards/"}, {"title": "Gambling", "date": "1971-08-18", "year": 1971, "position_listed": "President of Brigham Young University", "role_group": "BYU President", "role_note": false, "topics": ["Habits"], "runtime": "30:54", "runtime_min": 30.9, "byu_url": "https://speeches.byu.edu/talks/dallin-h-oaks/gambling/"}];
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDate = d => new Date(d + "T12:00:00").toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"});
+let sortKey = "date", sortDir = -1;   // default: newest first
+function cmp(a, b) {
+  let x = a[sortKey], y = b[sortKey];
+  if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
+  if (typeof x === "string") { if (sortKey === "title") { x = x.replace(/^["“]/, ""); y = y.replace(/^["“]/, ""); } return x.localeCompare(y) * sortDir; }
+  return (x - y) * sortDir;
+}
+function render() {
+  const list = [...talks].sort((a, b) => cmp(a, b) || b.date.localeCompare(a.date));
+  $("count").textContent = `${talks.length} talks`;
+  $("rows").innerHTML = list.map(t => `<tr>
+    <td class="d">${fmtDate(t.date)}</td>
+    <td class="t" style="min-width:0"><a href="${esc(t.byu_url)}" target="_blank" rel="noopener">${esc(t.title)}<span class="ext" aria-label="(opens BYU Speeches in a new tab)">↗</span></a>
+      ${t.position_listed ? `<div class="pos">${esc(t.position_listed)}</div>` : ""}
+      <div class="tags">${t.topics.map(x => `<span class="tag">${esc(x)}</span>`).join("")}</div></td>
+    <td class="cl">${esc(t.role_group)}${t.role_note ? `<div class="note">${t.position_listed ? "page lists a different calling" : "not listed; by date"}</div>` : ""}</td>
+    <td class="num">${t.runtime ? esc(t.runtime) : ""}</td></tr>`).join("");
+  document.querySelectorAll("th button").forEach(b => {
+    if (b.dataset.k === sortKey) { b.setAttribute("aria-sort", sortDir > 0 ? "ascending" : "descending"); b.dataset.dir = sortDir > 0 ? "▲" : "▼"; }
+    else b.removeAttribute("aria-sort");
+  });
+  const sv = `${sortKey}:${sortDir > 0 ? "asc" : "desc"}`;
+  if ([...$("sortSel").options].some(o => o.value === sv)) $("sortSel").value = sv;
+}
+document.querySelectorAll("th button").forEach(b => b.addEventListener("click", () => {
+  const k = b.dataset.k;
+  if (k === sortKey) sortDir = -sortDir; else { sortKey = k; sortDir = (k === "date" || k === "runtime_min") ? -1 : 1; }
+  render();
+}));
+$("sortSel").addEventListener("change", ev => { const [k, d] = ev.target.value.split(":"); sortKey = k; sortDir = d === "asc" ? 1 : -1; render(); });
+render();
+</script>
+</body>
+</html>
